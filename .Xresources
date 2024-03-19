@@ -1,0 +1,71 @@
+!!!Xresources configuration
+
+!!Xft settings
+Xft.dpi: 96
+Xft.antialias: true
+Xft.hinting: true
+Xft.autohint: false
+Xft.hintstyle: hintslight
+Xft.rgba: rgb
+Xft.lcdfilter: lcddefault
+
+!!XTerm settings
+XTerm*faceName: xft:monospace:pixelsize=14
+!XTerm*faceName: xft:DejaVu Sans Mono:pixelsize=14
+!'size' is for size in pt and 'pixelsize' is for size in pixels
+!XTerm*faceSize: 10
+XTerm*termName: xterm-256color
+XTerm*title: Terminal (XTerm)
+
+!!Urxvt settings
+urxvt*font: xft:DejaVu Sans Mono:size=10
+urxvt.letterSpace: -1
+!urxvt.background: black
+!urxvt.foreground: grey
+!fake transparency
+urxvt.transparent: true
+urxvt.shading: 32
+
+!!Common settings
+*scrollBar: false
+*saveLines: 4096
+
+
+!!Colors
+!!Bare minimum
+*.foreground: #93a1a1
+*.background: #141c21
+*.cursorColor: #afbfbf
+
+!! Colorscheme
+! black
+*.color0: #263640
+*.color8: #4a697d
+
+! red
+*.color1: #d12f2c
+*.color9: #fa3935
+
+! green
+*.color2: #819400
+*.color10: #a4bd00
+
+! yellow
+*.color3: #b08500
+*.color11: #d9a400
+
+! blue
+*.color4: #2587cc
+*.color12: #2ca2f5
+
+! magenta
+*.color5: #696ebf
+*.color13: #8086e8
+
+! cyan
+*.color6: #289c93
+*.color14: #33c5ba
+
+! white
+*.color7: #bfbaac
+*.color15: #fdf6e3
