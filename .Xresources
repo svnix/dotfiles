@@ -9,27 +9,71 @@ Xft.hintstyle: hintslight
 Xft.rgba: rgb
 Xft.lcdfilter: lcddefault
 
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!Fonts (theory :)
+!!Note: I have commented out all font lines below as I am very happy with the
+!!default xterm font used on openSUSE (fixed, at 9x18, set in the file
+!! "/usr/share/X11/app-defaults/XTerm").
+!
+!!Fonts can be specified in two ways; XLFD and XFT
+!
+!!X Logical Font Definition (XLFD), used (mostly?) for bitmap fonts has
+!!following format:
+!!-fndry-fmly-wght-slant-sWdth-adstyl-pxlsz-ptSz-resx-resy-spc-avgWdth-rgstry-\
+!!									encdng
+!! e.g. XTerm*font: -misc-fixed-medium-r-normal--15-140-75-75-c-90-iso10646-1
+!!      XTerm*font: -schumacher-clean-medium-r-normal-*-15-*-*-*-*-*-*-*
+!!
+!!X FreeType (XFT), used for ttf/otf fonts rendered by freetype2 has
+!!following format:
+!!      XTerm*faceName: Monospace
+!!      XTerm*faceSize: 10
+!!Or in single line as below
+!!      XTerm*faceName: xft:Monospace:size=10
+!!      XTerm*faceName: Hack:pixelsize=14:antialias=true:hintstyle=hintfull
+!!
+!!Here, 'size' is for size in 'pt' and 'pixelsize' is for size in 'px'
+!!
+!!By default, if both bitmap and truetype fonts are set, truetype is used. 
+!!To start with truetype font disabled (to force use of XLFD font) use below
+!!XTerm*renderFont: false
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 !!XTerm settings
 XTerm*faceName: xft:monospace:pixelsize=14
-!XTerm*faceName: xft:DejaVu Sans Mono:pixelsize=14
-!'size' is for size in pt and 'pixelsize' is for size in pixels
-!XTerm*faceSize: 10
+!!Some fonts do not look good in bold mode
+XTerm*boldFont: false
 XTerm*termName: xterm-256color
 XTerm*title: Terminal (XTerm)
 
 !!Urxvt settings
 urxvt*font: xft:DejaVu Sans Mono:size=10
+!urxvt*font: -misc-fixed-medium-r-normal--15-*-*-*-*-*-*-*
+URxvt*boldFont:
 urxvt.letterSpace: -1
-!urxvt.background: black
-!urxvt.foreground: grey
-!fake transparency
+!!fake transparency
 urxvt.transparent: true
 urxvt.shading: 32
 
 !!Common settings
-*scrollBar: false
-*saveLines: 4096
+*.scrollBar: false
+*.scrollbarRight: false
+*.saveLines: 4096
+*.geometry: 80x30
 
+!!Keyboard combinations like in other 'advanced' terminals.
+!!Source: 
+!!1) Arch wiki
+!!2) http://www.futurile.net/2016/06/14/xterm-setup-and-truetype-font-configuration
+
+XTerm.vt100.translations: #override \n\
+    Ctrl <Key> plus: larger-vt-font() \n\
+    Ctrl <Key> minus: smaller-vt-font() \n\
+    Ctrl <Key> 0: set-vt-font(d)
+    Shift <Keypress> Insert: insert-selection(CLIPBOARD) \n\
+    Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
+    Ctrl Shift <Key>V: insert-selection(CLIPBOARD) \n\
+    Ctrl <Btn1Up>: exec-formatted("xdg-open '%t'", PRIMARY)
 
 !!Colors
 !!Bare minimum
@@ -37,7 +81,7 @@ urxvt.shading: 32
 *.background: #141c21
 *.cursorColor: #afbfbf
 
-!! Colorscheme
+!! Colorscheme (https://terminal.sexy is a good source for various schemes)
 ! black
 *.color0: #263640
 *.color8: #4a697d
