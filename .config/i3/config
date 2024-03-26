@@ -82,12 +82,15 @@ smart_borders on
 # get criteria for windows using xprop. e.g. for firefox the about dialog 
 # window will show a property, 'WM_WINDOW_ROLE(STRING) = "About"'. Use as below
 for_window [window_role = "About"] floating enable
+for_window [title = "Library"] floating enable
 for_window [class="mpv"] floating enable, border pixel 1
+for_window [class="feh"] floating enable, border pixel 1
 
 # assign and for_window both can be used to make window open in a specific
 # workspace. Still need to understand their differences :p
 assign [class="firefox"] 2
-assign [class="mpv"] 4
+assign [class="librewolf"] 9
+assign [class="mpv"] 8
 
 # prevent focus changing to new window
 no_focus [window_role="pop-up"]
@@ -281,6 +284,9 @@ bindsym $mod+r mode "resize"
 bindsym $mod2+f exec firefox
 bindsym $mod2+t exec thunar
 bindsym $mod2+n exec --no-startup-id "xterm -e 'neofetch;bash'"
+bindsym Print exec --no-startup-id "scrot --file ~/Pictures/Screenshots/Screenshot_%Y%m%d_%H%M%S.png"
+bindsym Ctrl+Print exec --no-startup-id "scrot -u --file ~/Pictures/Screenshots/Screenshot_%Y%m%d_%H%M%S.png"
+bindsym Shift+Print exec --no-startup-id "scrot -s --file ~/Pictures/Screenshots/Screenshot_%Y%m%d_%H%M%S.png"
 
 
 # Start i3bar to display a workspace bar (plus the system information i3status
